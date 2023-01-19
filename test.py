@@ -69,7 +69,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 def endpoint(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("endpoint() called")
 
-    template = """/servicesNS/nobody/soar/storage/collections/data/kokoloris/batch_save"""
+    template = """/servicesNS/nobody/soar/storage/collections/data/kokoloris"""
 
     # parameter list for template variable replacement
     parameters = []
@@ -112,7 +112,7 @@ def payload(action=None, success=None, container=None, results=None, handle=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
 
-    post_data_1(container=container)
+    delete_data_1(container=container)
 
     return
 
@@ -172,6 +172,36 @@ def header(action=None, success=None, container=None, results=None, handle=None,
     phantom.format(container=container, template=template, parameters=parameters, name="header")
 
     endpoint(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def delete_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("delete_data_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    endpoint = phantom.get_format_data(name="endpoint")
+
+    parameters = []
+
+    if endpoint is not None:
+        parameters.append({
+            "location": endpoint,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("delete data", parameters=parameters, name="delete_data_1", assets=["splunk_rest"])
 
     return
 

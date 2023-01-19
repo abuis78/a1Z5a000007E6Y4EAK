@@ -26,13 +26,6 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "id": "port_5_to_port_6",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
                     "id": "port_0_to_port_7",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -45,9 +38,16 @@
                     "sourcePort": "7_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
+                },
+                {
+                    "id": "port_5_to_port_8",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "50785b856b6d07919edb5b264681260809d20287",
+            "hash": "5127261d505e61223461d14c60cab9709775fc99",
             "nodes": {
                 "0": {
                     "data": {
@@ -170,7 +170,7 @@
                         "functionName": "endpoint",
                         "id": "4",
                         "parameters": [],
-                        "template": "/servicesNS/nobody/soar/storage/collections/data/kokoloris/batch_save",
+                        "template": "/servicesNS/nobody/soar/storage/collections/data/kokoloris",
                         "type": "format"
                     },
                     "errors": {},
@@ -253,6 +253,39 @@
                     "type": "format",
                     "x": 740,
                     "y": 800
+                },
+                "8": {
+                    "data": {
+                        "action": "delete data",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "HTTP",
+                        "connectorConfigs": [
+                            "splunk_rest"
+                        ],
+                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "delete_data_1",
+                        "id": "8",
+                        "parameters": {
+                            "location": "endpoint:formatted_data"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "location"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "action",
+                    "x": 1000,
+                    "y": 1184.5
                 }
             },
             "notes": ""
@@ -264,7 +297,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:47:00.506528+00:00",
+    "create_time": "2023-01-19T13:51:02.681384+00:00",
     "draft_mode": false,
     "labels": [
         "*"
