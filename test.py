@@ -31,7 +31,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        call_api_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        excel_to_json_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -94,16 +94,16 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    endpoint = phantom.get_format_data(name="endpoint")
     payload = phantom.get_format_data(name="payload")
+    endpoint = phantom.get_format_data(name="endpoint")
 
     parameters = []
 
     if endpoint is not None:
         parameters.append({
-            "location": endpoint,
             "body": payload,
             "headers": "{ \"Content-Type\": \"application/json\" }",
+            "location": endpoint,
         })
 
     ################################################################################
@@ -159,8 +159,8 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
 
     if endpoint is not None:
         parameters.append({
-            "location": endpoint,
             "headers": "{ \"Content-Type\": \"application/json\" }",
+            "location": endpoint,
         })
 
     ################################################################################
@@ -179,8 +179,17 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
 
 
 @phantom.playbook_block()
-def call_api_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("call_api_2() called")
+def excel_to_json_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("excel_to_json_2() called")
+
+    id_value = container.get("id", None)
+
+    parameters = []
+
+    parameters.append({
+        "vault_id": None,
+        "container_id": id_value,
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -191,6 +200,8 @@ def call_api_2(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2")
 
     return
 
