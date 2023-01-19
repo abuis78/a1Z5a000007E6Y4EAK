@@ -27,7 +27,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1')
     j = excel_data_df.to_json(orient='records')
-    json_str = json.dumps(j)
+    #json_str = json.loads(j)
     phantom.debug(type(json_str))
     
     def lower_key(json_str):
