@@ -40,7 +40,8 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
             phantom.debug(lower_key(obj) for obj in in_dict)
         else:
             phantom.debug(in_dict)
-    
+            
+    lower_key(json_str)
     
 
     # Return a JSON-serializable object
