@@ -14,7 +14,8 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     from json import dumps
     
     outputs = {}
-    
+    new_key = {}
+    old_key = {}
     # Write your custom code here...
     success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
     phantom.debug(info[0]["path"])
@@ -24,6 +25,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1')
     json_str = excel_data_df.to_json(orient='records')
+    json_str[new_key] = json_str.pop(old_key)
     
     phantom.debug(json_str)
 
