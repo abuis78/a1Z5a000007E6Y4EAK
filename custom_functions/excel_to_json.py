@@ -16,6 +16,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     outputs = {}
     json_lower = {}
     in_dict = {}
+    json_str = {}
     # Write your custom code here...
 
     
