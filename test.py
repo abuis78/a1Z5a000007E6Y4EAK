@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'filter_1' block
-    filter_1(container=container)
+    # call 'header' block
+    header(container=container)
 
     return
 
@@ -61,6 +61,118 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         convertexceintjson_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+@phantom.playbook_block()
+def endpoint(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("endpoint() called")
+
+    template = """/servicesNS/nobody/soar/storage/collections/data/kokoloris/batch_save"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="endpoint")
+
+    payload(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("payload() called")
+
+    template = """[\n    {{\n        \"pool\": 1.0,\n        \"virtualmachine\": \"Pankaj\",\n        \"user\": \"CEO\"\n    }}\n]"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="payload")
+
+    post_data_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def post_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("post_data_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    endpoint = phantom.get_format_data(name="endpoint")
+    payload = phantom.get_format_data(name="payload")
+    header = phantom.get_format_data(name="header")
+
+    parameters = []
+
+    if endpoint is not None:
+        parameters.append({
+            "location": endpoint,
+            "body": payload,
+            "headers": header,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("post data", parameters=parameters, name="post_data_1", assets=["splunk_rest"])
+
+    return
+
+
+@phantom.playbook_block()
+def header(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("header() called")
+
+    template = """{{ \"Content-Type\": \"application/json\" }}"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="header")
+
+    endpoint(container=container)
 
     return
 

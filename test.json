@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_3",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -24,9 +17,37 @@
                     "sourcePort": "3_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_4_to_port_5",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_0_to_port_7",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_4",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "bec7abca0c763b0df1b3e92edac77ceabfcf3178",
+            "hash": "53a4ee58fc7dca8dffa02daaeaa417847b4d72f1",
             "nodes": {
                 "0": {
                     "data": {
@@ -40,8 +61,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 940,
-                    "y": 420
+                    "x": 760,
+                    "y": 680
                 },
                 "1": {
                     "data": {
@@ -57,8 +78,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1000,
-                    "y": 1000
+                    "x": 1400,
+                    "y": 1120
                 },
                 "2": {
                     "data": {
@@ -137,6 +158,101 @@
                     "type": "filter",
                     "x": 980,
                     "y": 524.5
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "customName": "endpoint",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "endpoint",
+                        "id": "4",
+                        "parameters": [],
+                        "template": "/servicesNS/nobody/soar/storage/collections/data/kokoloris/batch_save",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "format",
+                    "x": 740,
+                    "y": 940
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "payload",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "payload",
+                        "id": "5",
+                        "parameters": [],
+                        "template": "[\n    {{\n        \"pool\": 1.0,\n        \"virtualmachine\": \"Pankaj\",\n        \"user\": \"CEO\"\n    }}\n]",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "x": 740,
+                    "y": 1060
+                },
+                "6": {
+                    "data": {
+                        "action": "post data",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "HTTP",
+                        "connectorConfigs": [
+                            "splunk_rest"
+                        ],
+                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "post_data_1",
+                        "id": "6",
+                        "parameters": {
+                            "body": "payload:formatted_data",
+                            "headers": "header:formatted_data",
+                            "location": "endpoint:formatted_data"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "location"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "action",
+                    "x": 740,
+                    "y": 1204.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "customName": "header",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "header",
+                        "id": "7",
+                        "parameters": [],
+                        "template": "{{ \"Content-Type\": \"application/json\" }}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "x": 740,
+                    "y": 800
                 }
             },
             "notes": ""
@@ -148,7 +264,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:09:59.683697+00:00",
+    "create_time": "2023-01-19T13:40:42.139346+00:00",
     "draft_mode": false,
     "labels": [
         "*"
