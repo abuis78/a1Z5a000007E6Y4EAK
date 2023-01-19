@@ -155,7 +155,7 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 def header(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("header() called")
 
-    template = """{{ \"Content-Type\": \"application/json\" }}"""
+    template = """{{ 'Content-Type': 'application/json' }}"""
 
     # parameter list for template variable replacement
     parameters = []
