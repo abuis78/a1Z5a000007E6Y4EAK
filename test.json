@@ -47,7 +47,7 @@
                     "targetPort": "9_in"
                 }
             ],
-            "hash": "971c303015f80c7862a97f434d3100337ed128e8",
+            "hash": "a27e5d8a7459109fcd24ae526bf981c7b8c1ecd9",
             "nodes": {
                 "0": {
                     "data": {
@@ -289,7 +289,7 @@
                         "values": {
                             "excel_to_json": {
                                 "container_id": "container:id",
-                                "vault_id": null
+                                "vault_id": "filtered-data:filter_1:condition_1:artifact:*.cef.vaultId"
                             }
                         }
                     },
@@ -309,7 +309,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T14:09:15.275472+00:00",
+    "create_time": "2023-01-19T14:10:03.523995+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -183,13 +183,16 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
     phantom.debug("excel_to_json_2() called")
 
     id_value = container.get("id", None)
+    filtered_artifact_0_data_filter_1 = phantom.collect2(container=container, datapath=["filtered-data:filter_1:condition_1:artifact:*.cef.vaultId","filtered-data:filter_1:condition_1:artifact:*.id"])
 
     parameters = []
 
-    parameters.append({
-        "vault_id": None,
-        "container_id": id_value,
-    })
+    # build parameters list for 'excel_to_json_2' call
+    for filtered_artifact_0_item_filter_1 in filtered_artifact_0_data_filter_1:
+        parameters.append({
+            "vault_id": filtered_artifact_0_item_filter_1[0],
+            "container_id": id_value,
+        })
 
     ################################################################################
     ## Custom Code Start
