@@ -23,9 +23,9 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     phantom.debug(file)
     
     wb = load_workbook(file)
-    sheet = wb["Sheet1"]
-    rows = sheet.max_row
-    columns = sheet.max_column
+    ws = wb.active
+    rows = ws.max_row
+    columns = ws.max_column
     
     phantom.debug(rows, columns)
 
