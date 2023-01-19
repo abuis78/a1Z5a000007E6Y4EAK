@@ -12,39 +12,10 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'header' block
-    header(container=container)
+    # call 'filter_1' block
+    filter_1(container=container)
 
     return
-
-@phantom.playbook_block()
-def convertexceintjson_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("convertexceintjson_1() called")
-
-    filtered_artifact_0_data_filter_1 = phantom.collect2(container=container, datapath=["filtered-data:filter_1:condition_1:artifact:*.cef.vaultId","filtered-data:filter_1:condition_1:artifact:*.id"])
-
-    parameters = []
-
-    # build parameters list for 'convertexceintjson_1' call
-    for filtered_artifact_0_item_filter_1 in filtered_artifact_0_data_filter_1:
-        parameters.append({
-            "vault_id": filtered_artifact_0_item_filter_1[0],
-        })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/convertexceintjson", parameters=parameters, name="convertexceintjson_1")
-
-    return
-
 
 @phantom.playbook_block()
 def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
@@ -60,7 +31,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        convertexceintjson_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        call_api_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -203,6 +174,23 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
     ################################################################################
 
     phantom.act("delete data", parameters=parameters, name="delete_data_1", assets=["splunk_rest"])
+
+    return
+
+
+@phantom.playbook_block()
+def call_api_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("call_api_2() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
 
     return
 

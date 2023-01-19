@@ -7,30 +7,11 @@
             "description": "",
             "edges": [
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_3_to_port_2",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_4_to_port_5",
                     "sourceNode": "4",
                     "sourcePort": "4_out",
                     "targetNode": "5",
                     "targetPort": "5_in"
-                },
-                {
-                    "id": "port_0_to_port_7",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "7",
-                    "targetPort": "7_in"
                 },
                 {
                     "id": "port_7_to_port_4",
@@ -45,9 +26,28 @@
                     "sourcePort": "5_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "id": "port_0_to_port_3",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_3_to_port_9",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "4ed805e1b6710eb5b71fe356fc40db1e2fa179c1",
+            "hash": "135d9113b9b7af9a540ddf5a34f5db777edabfa6",
             "nodes": {
                 "0": {
                     "data": {
@@ -61,8 +61,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 760,
-                    "y": 680
+                    "x": 940,
+                    "y": 360
                 },
                 "1": {
                     "data": {
@@ -80,53 +80,6 @@
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 1400,
                     "y": 1120
-                },
-                "2": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "convertexceintjson",
-                            "repoName": "a1Z5a000007E6Y4EAK"
-                        },
-                        "functionId": 1,
-                        "functionName": "convertexceintjson_1",
-                        "id": "2",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "convertexceintjson": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "dataTypes": [],
-                                        "description": "",
-                                        "inputType": "item",
-                                        "label": "vault_id",
-                                        "name": "vault_id",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "convertexceintjson",
-                                "name": "convertexceintjson"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "convertexceintjson": {
-                                "vault_id": "filtered-data:filter_1:condition_1:artifact:*.cef.vaultId"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "2",
-                    "type": "utility",
-                    "x": 920,
-                    "y": 720
                 },
                 "3": {
                     "data": {
@@ -287,6 +240,27 @@
                     "type": "action",
                     "x": 1000,
                     "y": 1184.5
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": null,
+                        "functionId": 2,
+                        "functionName": "call_api_2",
+                        "id": "9",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {},
+                        "utilityType": null,
+                        "values": {}
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "utility",
+                    "x": 920,
+                    "y": 680
                 }
             },
             "notes": ""
@@ -298,7 +272,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:52:02.857485+00:00",
+    "create_time": "2023-01-19T14:08:30.300943+00:00",
     "draft_mode": false,
     "labels": [
         "*"
