@@ -1,0 +1,24 @@
+{
+    "create_time": "2023-01-19T13:03:48.514367+00:00",
+    "custom_function_id": "4c19a86fdeff5b51f8c3a9fab09ec8cadf80b1c3",
+    "description": "",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "vault_id",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "file_json",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.4.0.101028",
+    "python_version": "3"
+}
