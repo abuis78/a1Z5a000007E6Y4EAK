@@ -15,11 +15,9 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     
     outputs = {}
     json_lower = {}
+    in_dict = {}
     # Write your custom code here...
-    def lower_dict(d):
-        new_dict = dict((k.lower(), v) for k, v in d.items())
-        return new_dict    
-    
+
     
     
     success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
@@ -31,8 +29,16 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     json_str = json.loads(json_str)
     phantom.debug(json_str)
     
-    for key in json_str:
-        json_lower[key.toLowerCase()] = json[key];
+    def lower_key(json_str):
+        if type(in_dict) is dict:
+            out_dict = {}
+            for key, item in in_dict.items():
+                out_dict[key.lower()] = lower_key(item)
+            phantom.debug(out_dict)
+        elif type(in_dict) is list:
+            phantom.debug(lower_key(obj) for obj in in_dict)
+        else:
+            phantom.debug(in_dict)
     
     
     phantom.debug(json_lower)
