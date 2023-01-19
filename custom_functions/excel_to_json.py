@@ -14,7 +14,6 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     from json import dumps
     
     outputs = {}
-    json_str = {}
     # Write your custom code here...
     def lower_dict(d):
         new_dict = dict((k.lower(), v) for k, v in d.items())
@@ -31,7 +30,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     json_str = json.loads(json_str)
     phantom.debug(json_str)
     phantom.debug(type(json_str))
-    json = { x.translate({32:None}) : y for x, y in json_str.items()}
+    json = { x.translate({32:None}) : y for x, y in json_str[0].items()}
     
     phantom.debug(json)
     
