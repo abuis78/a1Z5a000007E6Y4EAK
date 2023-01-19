@@ -15,6 +15,12 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     
     outputs = {}
     # Write your custom code here...
+    def lower_dict(d):
+        new_dict = dict((k.lower(), v) for k, v in d.items())
+        return new_dict    
+    
+    
+    
     success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
     phantom.debug(info[0]["path"])
     phantom.debug(info[0]["name"])
@@ -23,9 +29,8 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1')
     json_str = excel_data_df.to_json(orient='records')
-    json = {k.lower(): v for k, v in json_str.items()}
     
-    phantom.debug(json)
+    phantom.debug(lower_dict(json_str))
 
     
     
