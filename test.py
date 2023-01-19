@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'convertexceintjson_1' block
-    convertexceintjson_1(container=container)
+    # call 'filter_1' block
+    filter_1(container=container)
 
     return
 
@@ -21,14 +21,14 @@ def on_start(container):
 def convertexceintjson_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("convertexceintjson_1() called")
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.vaultId","artifact:*.id"])
+    filtered_artifact_0_data_filter_1 = phantom.collect2(container=container, datapath=["filtered-data:filter_1:condition_1:artifact:*.cef.vaultId","filtered-data:filter_1:condition_1:artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'convertexceintjson_1' call
-    for container_artifact_item in container_artifact_data:
+    for filtered_artifact_0_item_filter_1 in filtered_artifact_0_data_filter_1:
         parameters.append({
-            "vault_id": container_artifact_item[0],
+            "vault_id": filtered_artifact_0_item_filter_1[0],
         })
 
     ################################################################################
@@ -42,6 +42,25 @@ def convertexceintjson_1(action=None, success=None, container=None, results=None
     ################################################################################
 
     phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/convertexceintjson", parameters=parameters, name="convertexceintjson_1")
+
+    return
+
+
+@phantom.playbook_block()
+def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_1() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            ["artifact:*.name", "==", "Vault Artifact"]
+        ],
+        name="filter_1:condition_1")
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        convertexceintjson_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 

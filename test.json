@@ -7,14 +7,26 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
+                    "id": "port_0_to_port_3",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_3_to_port_2",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "e031c274cea36b9d5887735ab8aabf8e5051991c",
+            "hash": "bec7abca0c763b0df1b3e92edac77ceabfcf3178",
             "nodes": {
                 "0": {
                     "data": {
@@ -85,15 +97,46 @@
                         "utilityType": "custom_function",
                         "values": {
                             "convertexceintjson": {
-                                "vault_id": "artifact:*.cef.vaultId"
+                                "vault_id": "filtered-data:filter_1:condition_1:artifact:*.cef.vaultId"
                             }
                         }
                     },
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "x": 940,
-                    "y": 580
+                    "x": 920,
+                    "y": 720
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.name",
+                                        "value": "Vault Artifact"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "Vault Artifact",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "3",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "filter",
+                    "x": 980,
+                    "y": 524.5
                 }
             },
             "notes": ""
@@ -105,7 +148,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:04:49.614701+00:00",
+    "create_time": "2023-01-19T13:09:59.683697+00:00",
     "draft_mode": false,
     "labels": [
         "*"
