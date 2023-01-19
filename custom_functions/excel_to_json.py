@@ -14,10 +14,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     import json
     
     outputs = {}
-    in_dict = {}
-    json_str = {}
     # Write your custom code here...
-    phantom.debug(type(json_str))
 
     
     
@@ -30,18 +27,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     json_str = json.loads(j)
     phantom.debug(type(json_str))
     
-    def lower_key(json_str):
-        if type(in_dict) is dict:
-            out_dict = {}
-            for key, item in in_dict.items():
-                out_dict[key.lower()] = lower_key(item)
-                phantom.debug("Ausgabe {}".format(out_dict))
-        elif type(in_dict) is list:
-            phantom.debug([lower_key(obj) for obj in in_dict])
-        else:
-            phantom.debug("Ausgabe {}".format(in_dict))
-            
-    lower_key(json_str)
+    y = dict((k.lower(), v) for k, v in json_str.iteritems())
     
 
     # Return a JSON-serializable object
