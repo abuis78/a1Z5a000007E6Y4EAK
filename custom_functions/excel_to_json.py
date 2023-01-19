@@ -11,7 +11,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     import json
     import phantom.rules as phantom
     import pandas
-    from json import dumps
+    import json
     
     outputs = {}
     json_lower = {}
