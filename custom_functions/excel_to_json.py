@@ -14,7 +14,6 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     import json
     
     outputs = {}
-    json_lower = {}
     in_dict = {}
     json_str = {}
     # Write your custom code here...
@@ -26,8 +25,8 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     phantom.debug(file)
     
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1')
-    json_str = excel_data_df.to_json(orient='records')
-    json_str = json.dumps(json_str)
+    j = excel_data_df.to_json(orient='records')
+    json_str = json.dumps(j)
     phantom.debug(type(json_str))
     
     def lower_key(json_str):
@@ -42,7 +41,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
             phantom.debug(in_dict)
     
     
-    phantom.debug(json_lower)
+
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
