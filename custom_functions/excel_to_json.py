@@ -30,10 +30,6 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     json_str = json.loads(json_str)
     phantom.debug(json_str)
     phantom.debug(type(json_str))
-    json = { x.translate({32:None}) : y for x, y in json_str[0].items()}
-    
-    phantom.debug(json)
-    
     
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
