@@ -69,7 +69,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 def endpoint(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("endpoint() called")
 
-    template = """/servicesNS/nobody/soar/storage/collections/data/kokoloris"""
+    template = """/servicesNS/nobody/soar/storage/collections/data/kokoloris/batch_save"""
 
     # parameter list for template variable replacement
     parameters = []
@@ -112,7 +112,7 @@ def payload(action=None, success=None, container=None, results=None, handle=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
 
-    delete_data_1(container=container)
+    post_data_1(container=container)
 
     return
 
