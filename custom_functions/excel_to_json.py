@@ -10,6 +10,8 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
+    from openpyxl import load_workbook
+    from json import dumps
     
     outputs = {}
     
@@ -19,6 +21,14 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     phantom.debug(info[0]["name"])
     file = info[0]["path"] + "/" + info[0]["name"]
     phantom.debug(file)
+    
+    wb = load_workbook(file)
+    sheet = wb["Sheet1"]
+    rows = sheet.max_row
+    columns = sheet.max_column
+    
+    phantom.debug(rows, columns)
+
     
     
     # Return a JSON-serializable object
