@@ -95,7 +95,7 @@ def endpoint(action=None, success=None, container=None, results=None, handle=Non
 def payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("payload() called")
 
-    template = """[ { \"pool\": \"1.0\",\"virtualmachine\": \"Pankaj\",\"user\": \"CEO\" } ]"""
+    template = """[ { \"pool\": 1.0,\"virtualmachine\": \"Pankaj\",\"user\": \"CEO\" } ]"""
 
     # parameter list for template variable replacement
     parameters = []

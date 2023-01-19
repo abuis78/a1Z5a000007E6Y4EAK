@@ -47,7 +47,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "7e49dafe0b7c1eb00b50a1b8321c560e7abb5a06",
+            "hash": "50785b856b6d07919edb5b264681260809d20287",
             "nodes": {
                 "0": {
                     "data": {
@@ -190,7 +190,7 @@
                         "functionName": "payload",
                         "id": "5",
                         "parameters": [],
-                        "template": "[ { \"pool\": \"1.0\",\"virtualmachine\": \"Pankaj\",\"user\": \"CEO\" } ]",
+                        "template": "[ { \"pool\": 1.0,\"virtualmachine\": \"Pankaj\",\"user\": \"CEO\" } ]",
                         "type": "format"
                     },
                     "errors": {},
@@ -264,7 +264,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:44:57.921765+00:00",
+    "create_time": "2023-01-19T13:47:00.506528+00:00",
     "draft_mode": false,
     "labels": [
         "*"
