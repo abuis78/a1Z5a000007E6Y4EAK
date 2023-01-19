@@ -47,7 +47,7 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "5127261d505e61223461d14c60cab9709775fc99",
+            "hash": "7f4e97490528c942f0cc871c7a2ebbda4983a2a4",
             "nodes": {
                 "0": {
                     "data": {
@@ -271,6 +271,7 @@
                         "functionName": "delete_data_1",
                         "id": "8",
                         "parameters": {
+                            "headers": "{ \"Content-Type\": \"application/json\" }",
                             "location": "endpoint:formatted_data"
                         },
                         "requiredParameters": [
@@ -297,7 +298,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:51:02.681384+00:00",
+    "create_time": "2023-01-19T13:51:14.113975+00:00",
     "draft_mode": false,
     "labels": [
         "*"

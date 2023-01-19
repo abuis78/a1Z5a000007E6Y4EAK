@@ -189,6 +189,7 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
     if endpoint is not None:
         parameters.append({
             "location": endpoint,
+            "headers": "{ \"Content-Type\": \"application/json\" }",
         })
 
     ################################################################################
