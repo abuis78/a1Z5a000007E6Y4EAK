@@ -37,7 +37,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
                 out_dict[key.lower()] = lower_key(item)
             phantom.debug(out_dict)
         elif type(in_dict) is list:
-            phantom.debug(lower_key(obj) for obj in in_dict)
+            phantom.debug([lower_key(obj) for obj in in_dict])
         else:
             phantom.debug(in_dict)
             
