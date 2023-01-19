@@ -15,10 +15,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     
     # Write your custom code here...
     success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
-    phantom.debug(
-        'phantom.vault_info results: success: {}, message: {}, info: {}'\
-        .format(success, message, info)
-    )
+    phantom.debug(info["path"])
     
     
     # Return a JSON-serializable object
