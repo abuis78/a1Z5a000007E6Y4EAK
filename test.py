@@ -125,7 +125,6 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     endpoint = phantom.get_format_data(name="endpoint")
     payload = phantom.get_format_data(name="payload")
-    header = phantom.get_format_data(name="header")
 
     parameters = []
 
@@ -133,7 +132,7 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
         parameters.append({
             "location": endpoint,
             "body": payload,
-            "headers": header,
+            "headers": "{ \"Content-Type\": \"application/json\" }",
         })
 
     ################################################################################

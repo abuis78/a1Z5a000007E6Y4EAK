@@ -47,7 +47,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "38a5801b6e11449537c11fafe793285851b654c0",
+            "hash": "e7f51eaeefbec6540c4666ca132afc86fce2d69c",
             "nodes": {
                 "0": {
                     "data": {
@@ -217,7 +217,7 @@
                         "id": "6",
                         "parameters": {
                             "body": "payload:formatted_data",
-                            "headers": "header:formatted_data",
+                            "headers": "{ \"Content-Type\": \"application/json\" }",
                             "location": "endpoint:formatted_data"
                         },
                         "requiredParameters": [
@@ -264,7 +264,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T13:41:28.364301+00:00",
+    "create_time": "2023-01-19T13:42:33.936071+00:00",
     "draft_mode": false,
     "labels": [
         "*"
