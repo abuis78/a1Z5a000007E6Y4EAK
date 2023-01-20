@@ -57,33 +57,7 @@ def endpoint(action=None, success=None, container=None, results=None, handle=Non
 
     phantom.format(container=container, template=template, parameters=parameters, name="endpoint")
 
-    payload(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("payload() called")
-
-    template = """{0}"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "excel_to_json_2:custom_function_result.data.j_dict"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="payload")
+    post_data_1(container=container)
 
     return
 
@@ -180,7 +154,7 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2", callback=debug_1)
+    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2", callback=endpoint)
 
     return
 

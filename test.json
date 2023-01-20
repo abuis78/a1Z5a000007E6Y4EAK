@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_4_to_port_5",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
                     "id": "port_0_to_port_3",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -33,14 +26,21 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_9_to_port_10",
+                    "id": "port_9_to_port_4",
                     "sourceNode": "9",
                     "sourcePort": "9_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_6",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "6f32859b634a6c94e35f92bb26a0f897c26d427f",
+            "hash": "7a5c5e75b86198cf28af9737cdf44e29ebc6c206",
             "nodes": {
                 "0": {
                     "data": {
@@ -293,28 +293,6 @@
                     "x": 920,
                     "y": 840
                 },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "customName": "payload",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 2,
-                        "functionName": "payload",
-                        "id": "5",
-                        "parameters": [
-                            "excel_to_json_2:custom_function_result.data.j_dict"
-                        ],
-                        "template": "{0}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "5",
-                    "type": "format",
-                    "x": 920,
-                    "y": 1000
-                },
                 "6": {
                     "data": {
                         "action": "post data",
@@ -348,7 +326,7 @@
                     "id": "6",
                     "type": "action",
                     "x": 920,
-                    "y": 1360
+                    "y": 980
                 },
                 "8": {
                     "data": {
@@ -452,7 +430,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:30:55.236506+00:00",
+    "create_time": "2023-01-20T07:31:42.507174+00:00",
     "draft_mode": false,
     "labels": [
         "*"
