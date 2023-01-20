@@ -68,17 +68,19 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    payload = phantom.get_format_data(name="payload")
+    excel_to_json_2__result = phantom.collect2(container=container, datapath=["excel_to_json_2:custom_function_result.data.j_dict"])
     endpoint = phantom.get_format_data(name="endpoint")
 
     parameters = []
 
-    if endpoint is not None:
-        parameters.append({
-            "body": payload,
-            "headers": "{ \"Content-Type\": \"application/json\" }",
-            "location": endpoint,
-        })
+    # build parameters list for 'post_data_1' call
+    for excel_to_json_2__result_item in excel_to_json_2__result:
+        if endpoint is not None:
+            parameters.append({
+                "body": excel_to_json_2__result_item[0],
+                "headers": "{ \"Content-Type\": \"application/json\" }",
+                "location": endpoint,
+            })
 
     ################################################################################
     ## Custom Code Start
