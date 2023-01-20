@@ -61,7 +61,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "f37532e4dbefb25dc189ec6756dd108422a2baed",
+            "hash": "135d9113b9b7af9a540ddf5a34f5db777edabfa6",
             "nodes": {
                 "0": {
                     "data": {
@@ -75,8 +75,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 940,
-                    "y": 260
+                    "x": 20,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -92,8 +92,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1400,
-                    "y": 1120
+                    "x": 320,
+                    "y": 0
                 },
                 "11": {
                     "data": {
@@ -114,8 +114,8 @@
                     "errors": {},
                     "id": "11",
                     "type": "format",
-                    "x": 920,
-                    "y": 960
+                    "x": 0,
+                    "y": 920
                 },
                 "12": {
                     "data": {
@@ -132,8 +132,8 @@
                     "errors": {},
                     "id": "12",
                     "type": "format",
-                    "x": 1120,
-                    "y": 360
+                    "x": 0,
+                    "y": 148
                 },
                 "3": {
                     "data": {
@@ -163,8 +163,8 @@
                     "errors": {},
                     "id": "3",
                     "type": "filter",
-                    "x": 980,
-                    "y": 520
+                    "x": 60,
+                    "y": 444
                 },
                 "4": {
                     "data": {
@@ -183,8 +183,8 @@
                     "errors": {},
                     "id": "4",
                     "type": "format",
-                    "x": 920,
-                    "y": 840
+                    "x": 0,
+                    "y": 772
                 },
                 "6": {
                     "data": {
@@ -218,8 +218,8 @@
                     "errors": {},
                     "id": "6",
                     "type": "action",
-                    "x": 920,
-                    "y": 1100
+                    "x": 0,
+                    "y": 1068
                 },
                 "8": {
                     "data": {
@@ -252,8 +252,8 @@
                     "errors": {},
                     "id": "8",
                     "type": "action",
-                    "x": 1140,
-                    "y": 460
+                    "x": 0,
+                    "y": 296
                 },
                 "9": {
                     "data": {
@@ -310,8 +310,8 @@
                     "errors": {},
                     "id": "9",
                     "type": "utility",
-                    "x": 920,
-                    "y": 680
+                    "x": 0,
+                    "y": 624
                 }
             },
             "notes": ""
