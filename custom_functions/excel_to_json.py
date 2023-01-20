@@ -26,7 +26,8 @@ def excel_to_json(vault_id=None, container_id=None, remove_domain_field=None, **
         else:
             return user
 
-    success, message, info = phantom.ault_info(vault_id=vault_id, container_id=container_id)
+    success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
+    phantom.debug(info)
     file = info[0]["path"]
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={remove_domain_field: remove_domain})
     excel_data_df.columns= excel_data_df.columns.str.lower()
