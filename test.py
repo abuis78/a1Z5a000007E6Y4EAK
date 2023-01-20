@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'filter_1' block
-    filter_1(container=container)
+    # call 'format_5' block
+    format_5(container=container)
 
     return
 
@@ -123,7 +123,7 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
     ## Custom Code End
     ################################################################################
 
-    phantom.act("delete data", parameters=parameters, name="delete_data_1", assets=["splunk_rest"])
+    phantom.act("delete data", parameters=parameters, name="delete_data_1", assets=["splunk_rest"], callback=filter_1)
 
     return
 
