@@ -12,17 +12,25 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     import phantom.rules as phantom
     import pandas
     import json
+    import re
     
     outputs = {}
     # Write your custom code here...
-
+    r = r'(?:.*\\)(?P<user>[^\\]+)'
+    p = re.compile(r)
+    def remove_domain(user):
+        m = p.match(user)
+        if m:
+            return m.group('user')
+        else:
+            return user
     
     
     success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
     file = info[0]["path"]
     phantom.debug(file)
     
-    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","virtualmachine", "user"])
+    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","virtualmachine", "user"], converters={"user": remove_domain})
     #excel_data_df = pandas.read_excel(file, sheet_name='Sheet1')
     # execl_data_df = excel_data_df.rename(columns = {"Pool":"pool", "User": "user", "Virtual Machine": "virtualmachine"} )
     j_dict = excel_data_df.to_json(orient='records')
