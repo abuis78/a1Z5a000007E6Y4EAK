@@ -85,7 +85,7 @@ def payload(action=None, success=None, container=None, results=None, handle=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
 
-    post_data_1(container=container)
+    debug_1(container=container)
 
     return
 
@@ -183,6 +183,44 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
     ################################################################################
 
     phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2", callback=endpoint)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_1() called")
+
+    excel_to_json_2__result = phantom.collect2(container=container, datapath=["excel_to_json_2:custom_function_result.data.j_dict"])
+
+    excel_to_json_2_data_j_dict = [item[0] for item in excel_to_json_2__result]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": excel_to_json_2_data_j_dict,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
 
     return
 
