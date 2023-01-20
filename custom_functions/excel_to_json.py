@@ -22,7 +22,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     file = info[0]["path"]
     phantom.debug(file)
     
-    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1')
+    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","Virtual Machine", "User"])
     j_dict = excel_data_df.to_json(orient='records')
     j_dict = json.loads(j_dict)
     phantom.debug(j_dict)
