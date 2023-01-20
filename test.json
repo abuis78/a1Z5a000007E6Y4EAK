@@ -40,14 +40,21 @@
                     "targetPort": "8_in"
                 },
                 {
-                    "id": "port_0_to_port_12",
+                    "id": "port_0_to_port_3",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "12",
-                    "targetPort": "12_in"
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_11_to_port_10",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "7bab03d5a543895334e487e985ebfe97a8904d27",
+            "hash": "4b5a674add1d1082680b5736ce47b61b737215c3",
             "nodes": {
                 "0": {
                     "data": {
@@ -229,7 +236,7 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "excel_to_json_2:custom_function_result.data.j_dict"
+                                    "payload:formatted_data"
                                 ],
                                 "input_10": null,
                                 "input_2": null,
@@ -246,8 +253,8 @@
                     "errors": {},
                     "id": "10",
                     "type": "utility",
-                    "x": 920,
-                    "y": 1164.5
+                    "x": 720,
+                    "y": 1040
                 },
                 "11": {
                     "data": {
@@ -373,7 +380,7 @@
                     "id": "6",
                     "type": "action",
                     "x": 920,
-                    "y": 1080
+                    "y": 1140
                 },
                 "8": {
                     "data": {
@@ -477,7 +484,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:34:38.200453+00:00",
+    "create_time": "2023-01-20T07:35:19.214672+00:00",
     "draft_mode": false,
     "labels": [
         "*"

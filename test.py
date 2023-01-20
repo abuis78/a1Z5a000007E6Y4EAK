@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'format_5' block
-    format_5(container=container)
+    # call 'filter_1' block
+    filter_1(container=container)
 
     return
 
@@ -161,14 +161,12 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    excel_to_json_2__result = phantom.collect2(container=container, datapath=["excel_to_json_2:custom_function_result.data.j_dict"])
-
-    excel_to_json_2_data_j_dict = [item[0] for item in excel_to_json_2__result]
+    payload = phantom.get_format_data(name="payload")
 
     parameters = []
 
     parameters.append({
-        "input_1": excel_to_json_2_data_j_dict,
+        "input_1": payload,
         "input_2": None,
         "input_3": None,
         "input_4": None,
@@ -217,6 +215,8 @@ def payload(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
+
+    debug_1(container=container)
 
     return
 
