@@ -47,7 +47,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "9d51184ad32fb25f4fd33a7d0b37b943de5214ed",
+            "hash": "fb57f0d55e7f837dc34ca6cfc348e543a5ebf1d4",
             "nodes": {
                 "0": {
                     "data": {
@@ -171,7 +171,7 @@
                         "functionName": "post_data_1",
                         "id": "6",
                         "parameters": {
-                            "body": "payload:formatted_data",
+                            "body": "excel_to_json_2:custom_function_result.data.j_dict",
                             "headers": "{ \"Content-Type\": \"application/json\" }",
                             "location": "endpoint:formatted_data"
                         },
@@ -187,7 +187,7 @@
                     "id": "6",
                     "type": "action",
                     "x": 920,
-                    "y": 1120
+                    "y": 1280
                 },
                 "8": {
                     "data": {
@@ -291,7 +291,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:24:40.373910+00:00",
+    "create_time": "2023-01-20T07:25:46.757519+00:00",
     "draft_mode": false,
     "labels": [
         "*"
