@@ -33,14 +33,21 @@
                     "targetPort": "4_in"
                 },
                 {
-                    "id": "port_4_to_port_6",
+                    "id": "port_4_to_port_11",
                     "sourceNode": "4",
                     "sourcePort": "4_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_6",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "7a5c5e75b86198cf28af9737cdf44e29ebc6c206",
+            "hash": "7628b624e1ad1e1b9cd13ef551ce3dc4bbcfcdac",
             "nodes": {
                 "0": {
                     "data": {
@@ -242,6 +249,28 @@
                     "x": 920,
                     "y": 1164.5
                 },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "customName": "payload",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "payload",
+                        "id": "11",
+                        "parameters": [
+                            "excel_to_json_2:custom_function_result.data.j_dict"
+                        ],
+                        "template": "{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "format",
+                    "x": 920,
+                    "y": 960
+                },
                 "3": {
                     "data": {
                         "advanced": {
@@ -310,7 +339,7 @@
                         "functionName": "post_data_1",
                         "id": "6",
                         "parameters": {
-                            "body": "excel_to_json_2:custom_function_result.data.j_dict",
+                            "body": "payload:formatted_data",
                             "headers": "{ \"Content-Type\": \"application/json\" }",
                             "location": "endpoint:formatted_data"
                         },
@@ -326,7 +355,7 @@
                     "id": "6",
                     "type": "action",
                     "x": 920,
-                    "y": 980
+                    "y": 1080
                 },
                 "8": {
                     "data": {
@@ -430,7 +459,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:31:42.507174+00:00",
+    "create_time": "2023-01-20T07:33:23.668078+00:00",
     "draft_mode": false,
     "labels": [
         "*"

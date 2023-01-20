@@ -57,7 +57,7 @@ def endpoint(action=None, success=None, container=None, results=None, handle=Non
 
     phantom.format(container=container, template=template, parameters=parameters, name="endpoint")
 
-    post_data_1(container=container)
+    payload(container=container)
 
     return
 
@@ -68,19 +68,17 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    excel_to_json_2__result = phantom.collect2(container=container, datapath=["excel_to_json_2:custom_function_result.data.j_dict"])
+    payload = phantom.get_format_data(name="payload")
     endpoint = phantom.get_format_data(name="endpoint")
 
     parameters = []
 
-    # build parameters list for 'post_data_1' call
-    for excel_to_json_2__result_item in excel_to_json_2__result:
-        if endpoint is not None:
-            parameters.append({
-                "body": excel_to_json_2__result_item[0],
-                "headers": "{ \"Content-Type\": \"application/json\" }",
-                "location": endpoint,
-            })
+    if endpoint is not None:
+        parameters.append({
+            "body": payload,
+            "headers": "{ \"Content-Type\": \"application/json\" }",
+            "location": endpoint,
+        })
 
     ################################################################################
     ## Custom Code Start
@@ -193,6 +191,34 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
+
+    return
+
+
+@phantom.playbook_block()
+def payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("payload() called")
+
+    template = """{0}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "excel_to_json_2:custom_function_result.data.j_dict"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="payload")
+
+    post_data_1(container=container)
 
     return
 
