@@ -218,7 +218,7 @@ def payload(action=None, success=None, container=None, results=None, handle=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
 
-    post_data_1(container=container)
+    delete_data_1(container=container)
 
     return
 
