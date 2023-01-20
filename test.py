@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'format_5' block
-    format_5(container=container)
+    # call 'filter_1' block
+    filter_1(container=container)
 
     return
 
