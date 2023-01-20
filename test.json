@@ -52,16 +52,9 @@
                     "sourcePort": "0_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
-                },
-                {
-                    "id": "port_8_to_port_3",
-                    "sourceNode": "8",
-                    "sourcePort": "8_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
                 }
             ],
-            "hash": "135d9113b9b7af9a540ddf5a34f5db777edabfa6",
+            "hash": "b7546b28723e3f958d78c19d97b94446945f1277",
             "nodes": {
                 "0": {
                     "data": {
@@ -334,7 +327,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T08:54:32.928617+00:00",
+    "create_time": "2023-01-20T08:55:05.807738+00:00",
     "draft_mode": false,
     "labels": [
         "*"
