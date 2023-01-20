@@ -61,7 +61,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "135d9113b9b7af9a540ddf5a34f5db777edabfa6",
+            "hash": "9f927a001639272661cff109779700f7a91c054b",
             "nodes": {
                 "0": {
                     "data": {
@@ -371,7 +371,7 @@
                         "functionName": "post_data_1",
                         "id": "6",
                         "parameters": {
-                            "body": "payload:formatted_data",
+                            "body": "excel_to_json_2:custom_function_result.data.j_dict",
                             "headers": "{ \"Content-Type\": \"application/json\" }",
                             "location": "endpoint:formatted_data"
                         },
@@ -491,7 +491,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:35:43.684382+00:00",
+    "create_time": "2023-01-20T07:46:39.240702+00:00",
     "draft_mode": false,
     "labels": [
         "*"
