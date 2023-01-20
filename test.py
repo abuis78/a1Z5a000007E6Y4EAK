@@ -123,7 +123,7 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
     ## Custom Code End
     ################################################################################
 
-    phantom.act("delete data", parameters=parameters, name="delete_data_1", assets=["splunk_rest"], callback=filter_1)
+    phantom.act("delete data", parameters=parameters, name="delete_data_1", assets=["splunk_rest"])
 
     return
 
