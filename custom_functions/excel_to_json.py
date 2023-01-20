@@ -25,25 +25,14 @@ def excel_to_json(vault_id=None, container_id=None, remove_domain_field=None, **
             return m.group('user')
         else:
             return user
-    
-    
+
     success, message, info = phantom.vault_info(vault_id=vault_id, container_id=container_id)
     file = info[0]["path"]
-    # phantom.debug(file)
-    
-    #excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","virtualmachine", "user"], converters={"user": remove_domain})
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={remove_domain_field: remove_domain})
     excel_data_df.columns= excel_data_df.columns.str.lower()
     excel_data_df.columns = excel_data_df.columns.str.replace(" ", "")
     column_names = list(excel_data_df.columns.values)
-    
-    phantom.debug(column_names)
-    # excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={"user": remove_domain} )
-    #execl_data_df = excel_data_df.rename(columns = {"Pool":"pool", "Virtual Machine": "virtualmachine", "User": "user"} )
     j_dict = excel_data_df.to_json(orient='records')
-    #j_dict = json.loads(j_dict)
-    # phantom.debug(j_dict)
-    #phantom.debug(type(j_dict))
     
     outputs["j_dict"] = j_dict
     # Return a JSON-serializable object
