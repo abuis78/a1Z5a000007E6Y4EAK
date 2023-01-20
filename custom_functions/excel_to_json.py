@@ -31,7 +31,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     # phantom.debug(file)
     
     excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","virtualmachine", "user"], converters={"user": remove_domain})
-    head = excel_data_df.head()
+    head = excel_data_df.head(1)
     phantom.debug(head)
     # excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={"user": remove_domain} )
     #execl_data_df = excel_data_df.rename(columns = {"Pool":"pool", "Virtual Machine": "virtualmachine", "User": "user"} )
