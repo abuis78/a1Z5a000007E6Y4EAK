@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'filter_1' block
-    filter_1(container=container)
+    # call 'format_5' block
+    format_5(container=container)
 
     return
 
@@ -101,14 +101,14 @@ def delete_data_1(action=None, success=None, container=None, results=None, handl
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    endpoint = phantom.get_format_data(name="endpoint")
+    format_5 = phantom.get_format_data(name="format_5")
 
     parameters = []
 
-    if endpoint is not None:
+    if format_5 is not None:
         parameters.append({
             "headers": "{ \"Content-Type\": \"application/json\" }",
-            "location": endpoint,
+            "location": format_5,
         })
 
     ################################################################################
@@ -217,6 +217,30 @@ def payload(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
+
+    return
+
+
+@phantom.playbook_block()
+def format_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_5() called")
+
+    template = """/servicesNS/nobody/soar/storage/collections/data/kokoloris"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_5")
 
     delete_data_1(container=container)
 

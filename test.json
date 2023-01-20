@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_3",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 0
@@ -40,14 +33,21 @@
                     "targetPort": "11_in"
                 },
                 {
-                    "id": "port_11_to_port_8",
-                    "sourceNode": "11",
-                    "sourcePort": "11_out",
+                    "id": "port_12_to_port_8",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_0_to_port_12",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
-            "hash": "22b4e0b9d4855511def8ad7305da8e34a273f50f",
+            "hash": "7bab03d5a543895334e487e985ebfe97a8904d27",
             "nodes": {
                 "0": {
                     "data": {
@@ -271,6 +271,24 @@
                     "x": 920,
                     "y": 960
                 },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 5,
+                        "functionName": "format_5",
+                        "id": "12",
+                        "parameters": [],
+                        "template": "/servicesNS/nobody/soar/storage/collections/data/kokoloris",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "format",
+                    "x": 1167.5,
+                    "y": 800.375
+                },
                 "3": {
                     "data": {
                         "advanced": {
@@ -375,7 +393,7 @@
                         "id": "8",
                         "parameters": {
                             "headers": "{ \"Content-Type\": \"application/json\" }",
-                            "location": "endpoint:formatted_data"
+                            "location": "format_5:formatted_data"
                         },
                         "requiredParameters": [
                             {
@@ -459,7 +477,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:33:57.409394+00:00",
+    "create_time": "2023-01-20T07:34:38.200453+00:00",
     "draft_mode": false,
     "labels": [
         "*"
