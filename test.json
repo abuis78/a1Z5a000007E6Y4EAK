@@ -61,7 +61,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "135d9113b9b7af9a540ddf5a34f5db777edabfa6",
+            "hash": "65bfa87e32fdf59148792117c64d51cf10259213",
             "nodes": {
                 "0": {
                     "data": {
@@ -293,6 +293,16 @@
                                         "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "remove_domain_field",
+                                        "name": "remove_domain_field",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
                                     }
                                 ],
                                 "label": "excel_to_json",
@@ -303,6 +313,7 @@
                         "values": {
                             "excel_to_json": {
                                 "container_id": "container:id",
+                                "remove_domain_field": "User",
                                 "vault_id": "filtered-data:filter_1:condition_1:artifact:*.cef.vaultId"
                             }
                         }
@@ -311,7 +322,7 @@
                     "id": "9",
                     "type": "utility",
                     "x": 0,
-                    "y": 624
+                    "y": 620
                 }
             },
             "notes": ""
@@ -323,7 +334,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-20T07:54:51.572603+00:00",
+    "create_time": "2023-01-20T08:43:37.219739+00:00",
     "draft_mode": false,
     "labels": [
         "*"

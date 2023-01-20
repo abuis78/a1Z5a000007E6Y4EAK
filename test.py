@@ -142,6 +142,7 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
         parameters.append({
             "vault_id": filtered_artifact_0_item_filter_1[0],
             "container_id": id_value,
+            "remove_domain_field": "User",
         })
 
     ################################################################################
