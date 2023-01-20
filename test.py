@@ -85,8 +85,6 @@ def payload(action=None, success=None, container=None, results=None, handle=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
 
-    debug_1(container=container)
-
     return
 
 
@@ -182,7 +180,7 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2", callback=endpoint)
+    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2", callback=debug_1)
 
     return
 
