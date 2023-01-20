@@ -68,19 +68,17 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    excel_to_json_2__result = phantom.collect2(container=container, datapath=["excel_to_json_2:custom_function_result.data.j_dict"])
+    payload = phantom.get_format_data(name="payload")
     endpoint = phantom.get_format_data(name="endpoint")
 
     parameters = []
 
-    # build parameters list for 'post_data_1' call
-    for excel_to_json_2__result_item in excel_to_json_2__result:
-        if endpoint is not None:
-            parameters.append({
-                "body": excel_to_json_2__result_item[0],
-                "headers": "{ \"Content-Type\": \"application/json\" }",
-                "location": endpoint,
-            })
+    if endpoint is not None:
+        parameters.append({
+            "body": payload,
+            "headers": "{ \"Content-Type\": \"application/json\" }",
+            "location": endpoint,
+        })
 
     ################################################################################
     ## Custom Code Start
@@ -160,42 +158,6 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
 
 
 @phantom.playbook_block()
-def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("debug_1() called")
-
-    payload = phantom.get_format_data(name="payload")
-
-    parameters = []
-
-    parameters.append({
-        "input_1": payload,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1", callback=post_data_1)
-
-    return
-
-
-@phantom.playbook_block()
 def payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("payload() called")
 
@@ -218,7 +180,7 @@ def payload(action=None, success=None, container=None, results=None, handle=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="payload")
 
-    debug_1(container=container)
+    post_data_1(container=container)
 
     return
 
