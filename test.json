@@ -14,13 +14,6 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "id": "port_7_to_port_4",
-                    "sourceNode": "7",
-                    "sourcePort": "7_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
                     "id": "port_5_to_port_6",
                     "sourceNode": "5",
                     "sourcePort": "5_out",
@@ -45,9 +38,16 @@
                     "sourcePort": "3_out",
                     "targetNode": "9",
                     "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_4",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "135d9113b9b7af9a540ddf5a34f5db777edabfa6",
+            "hash": "9d51184ad32fb25f4fd33a7d0b37b943de5214ed",
             "nodes": {
                 "0": {
                     "data": {
@@ -129,8 +129,8 @@
                     "errors": {},
                     "id": "4",
                     "type": "format",
-                    "x": 740,
-                    "y": 940
+                    "x": 920,
+                    "y": 840
                 },
                 "5": {
                     "data": {
@@ -142,15 +142,17 @@
                         "functionId": 2,
                         "functionName": "payload",
                         "id": "5",
-                        "parameters": [],
-                        "template": "[ { \"pool\": 1.0,\"virtualmachine\": \"Pankaj\",\"user\": \"CEO\" } ]",
+                        "parameters": [
+                            "excel_to_json_2:custom_function_result.data.j_dict"
+                        ],
+                        "template": "{0}",
                         "type": "format"
                     },
                     "errors": {},
                     "id": "5",
                     "type": "format",
-                    "x": 740,
-                    "y": 1060
+                    "x": 920,
+                    "y": 1000
                 },
                 "6": {
                     "data": {
@@ -184,28 +186,8 @@
                     "errors": {},
                     "id": "6",
                     "type": "action",
-                    "x": 740,
-                    "y": 1204.5
-                },
-                "7": {
-                    "data": {
-                        "advanced": {
-                            "customName": "header",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 3,
-                        "functionName": "header",
-                        "id": "7",
-                        "parameters": [],
-                        "template": "{{ 'Content-Type': 'application/json' }}",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "7",
-                    "type": "format",
-                    "x": 740,
-                    "y": 800
+                    "x": 920,
+                    "y": 1120
                 },
                 "8": {
                     "data": {
@@ -238,8 +220,8 @@
                     "errors": {},
                     "id": "8",
                     "type": "action",
-                    "x": 1000,
-                    "y": 1184.5
+                    "x": 1360,
+                    "y": 1440
                 },
                 "9": {
                     "data": {
@@ -309,7 +291,7 @@
         "schema": "5.0.8",
         "version": "5.4.0.101028"
     },
-    "create_time": "2023-01-19T14:10:03.523995+00:00",
+    "create_time": "2023-01-20T07:24:40.373910+00:00",
     "draft_mode": false,
     "labels": [
         "*"

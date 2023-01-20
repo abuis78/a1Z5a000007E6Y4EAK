@@ -66,10 +66,12 @@ def endpoint(action=None, success=None, container=None, results=None, handle=Non
 def payload(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("payload() called")
 
-    template = """[ { \"pool\": 1.0,\"virtualmachine\": \"Pankaj\",\"user\": \"CEO\" } ]"""
+    template = """{0}"""
 
     # parameter list for template variable replacement
-    parameters = []
+    parameters = [
+        "excel_to_json_2:custom_function_result.data.j_dict"
+    ]
 
     ################################################################################
     ## Custom Code Start
@@ -117,32 +119,6 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
     ################################################################################
 
     phantom.act("post data", parameters=parameters, name="post_data_1", assets=["splunk_rest"])
-
-    return
-
-
-@phantom.playbook_block()
-def header(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("header() called")
-
-    template = """{{ 'Content-Type': 'application/json' }}"""
-
-    # parameter list for template variable replacement
-    parameters = []
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="header")
-
-    endpoint(container=container)
 
     return
 
@@ -204,7 +180,7 @@ def excel_to_json_2(action=None, success=None, container=None, results=None, han
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2")
+    phantom.custom_function(custom_function="a1Z5a000007E6Y4EAK/excel_to_json", parameters=parameters, name="excel_to_json_2", callback=endpoint)
 
     return
 
