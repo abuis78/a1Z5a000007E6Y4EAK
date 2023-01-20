@@ -31,8 +31,8 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     phantom.debug(file)
     
     # excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","virtualmachine", "user"], converters={"user": remove_domain})
-    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={"user": remove_domain})
-    execl_data_df = excel_data_df.rename(columns = {"Pool":"pool", "Virtual Machine": "virtualmachine", "User": "user"} )
+    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={"user": remove_domain},columns = {"Pool":"pool", "Virtual Machine": "virtualmachine", "User": "user"} )
+    #execl_data_df = excel_data_df.rename(columns = {"Pool":"pool", "Virtual Machine": "virtualmachine", "User": "user"} )
     j_dict = excel_data_df.to_json(orient='records')
     #j_dict = json.loads(j_dict)
     phantom.debug(j_dict)
