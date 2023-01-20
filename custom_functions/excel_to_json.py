@@ -1,8 +1,9 @@
-def excel_to_json(vault_id=None, container_id=None, **kwargs):
+def excel_to_json(vault_id=None, container_id=None, remove_domain_field=None, **kwargs):
     """
     Args:
         vault_id
         container_id
+        remove_domain_field
     
     Returns a JSON-serializable object that implements the configured data paths:
         j_dict
@@ -31,7 +32,7 @@ def excel_to_json(vault_id=None, container_id=None, **kwargs):
     # phantom.debug(file)
     
     #excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', names=["pool","virtualmachine", "user"], converters={"user": remove_domain})
-    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={"user": remove_domain})
+    excel_data_df = pandas.read_excel(file, sheet_name='Sheet1', converters={remove_domain_field: remove_domain})
     excel_data_df.columns= excel_data_df.columns.str.lower()
     excel_data_df.columns = excel_data_df.columns.str.replace(" ", "")
     column_names = list(excel_data_df.columns.values)
